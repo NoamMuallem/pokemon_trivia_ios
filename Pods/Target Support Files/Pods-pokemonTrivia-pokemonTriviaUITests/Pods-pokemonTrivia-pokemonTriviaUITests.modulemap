@@ -1,0 +1,6 @@
+framework module Pods_pokemonTrivia_pokemonTriviaUITests {
+  umbrella header "Pods-pokemonTrivia-pokemonTriviaUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

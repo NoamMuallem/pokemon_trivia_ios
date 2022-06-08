@@ -1,24 +1,228 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--HomeViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" title="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="pokemonTrivia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pokemon trivia!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbR-Vm-WJ0" userLabel="Pokemon trivia">
+                                <rect key="frame" x="92.5" y="423" width="229.5" height="50"/>
+                                <accessibility key="accessibilityConfiguration" label="pokemon trivia"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="y1X-bb-zO8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Final Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkV-IH-2A9">
+                                <rect key="frame" x="148" y="349" width="118.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNI-Ot-BOk" customClass="FABButton" customModule="Material">
+                                <rect key="frame" x="166" y="523" width="82" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Let's Go!"/>
+                                <connections>
+                                    <action selector="startGame:" destination="BYZ-38-t0r" eventType="touchDown" id="7c4-go-Dzb"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="home"/>
+                        <constraints>
+                            <constraint firstItem="GbR-Vm-WJ0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="51x-WM-ZTf"/>
+                            <constraint firstItem="wNI-Ot-BOk" firstAttribute="top" secondItem="GbR-Vm-WJ0" secondAttribute="top" constant="100" id="FW5-tf-cdW"/>
+                            <constraint firstItem="wNI-Ot-BOk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Li4-yR-G7a"/>
+                            <constraint firstItem="JkV-IH-2A9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X8j-GW-ANs"/>
+                            <constraint firstItem="GbR-Vm-WJ0" firstAttribute="bottom" secondItem="JkV-IH-2A9" secondAttribute="bottom" constant="100" id="f5Q-7c-cEU"/>
+                            <constraint firstItem="GbR-Vm-WJ0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pZi-ov-vLn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lastScoreLbl" destination="JkV-IH-2A9" id="mGR-dm-OHh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="45" y="84"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="ZZL-nI-lTk">
+            <objects>
+                <viewController storyboardIdentifier="game" id="XQr-At-BQN" customClass="GameViewController" customModule="pokemonTrivia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jRf-1c-qU1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XD4-Kk-Phf">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="of8-L8-G2g">
+                                        <rect key="frame" x="12" y="12" width="390" height="391"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ivq-cx-58p" userLabel="BtnA1" customClass="Button" customModule="Material">
+                                                <rect key="frame" x="12" y="12" width="366" height="65"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" titleAlignment="automatic">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Answer 1">
+                                                            <attributes>
+                                                                <font key="NSFont" size="19" name="Helvetica"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="baseForegroundColor" red="0.37254901959999998" green="0.4431372549" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="baseBackgroundColor" red="0.81568627449999997" green="0.78823529410000004" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="chooseAnswer1:" destination="XQr-At-BQN" eventType="touchDown" id="e8M-Mc-Vsr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQn-U2-zsA" userLabel="BtnA2" customClass="FlatButton" customModule="Material">
+                                                <rect key="frame" x="12" y="113" width="366" height="64.5"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Answer 1">
+                                                            <attributes>
+                                                                <font key="NSFont" size="19" name="Helvetica"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="baseForegroundColor" red="0.37254901959999998" green="0.4431372549" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="baseBackgroundColor" red="0.81568627449999997" green="0.78823529410000004" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="chooseAnswer2:" destination="XQr-At-BQN" eventType="touchDown" id="jtY-Ke-rh9"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ3-4C-zfF" userLabel="BtnA3" customClass="Button" customModule="Material">
+                                                <rect key="frame" x="12" y="213.5" width="366" height="65"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Answer 1">
+                                                            <attributes>
+                                                                <font key="NSFont" size="19" name="Helvetica"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="baseForegroundColor" red="0.37254901959999998" green="0.4431372549" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="baseBackgroundColor" red="0.81568627449999997" green="0.78823529410000004" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="chooseAnswer3:" destination="XQr-At-BQN" eventType="touchDown" id="3dF-PP-ahE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsa-IJ-rwl" userLabel="BtnA4" customClass="FABButton" customModule="Material">
+                                                <rect key="frame" x="12" y="314.5" width="366" height="64.5"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Answer 1">
+                                                            <attributes>
+                                                                <font key="NSFont" size="19" name="Helvetica"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="baseForegroundColor" red="0.37254901959999998" green="0.4431372549" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="baseBackgroundColor" red="0.81568627449999997" green="0.78823529410000004" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="chooseAnswer4:" destination="XQr-At-BQN" eventType="touchDown" id="5GO-HY-96u"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <directionalEdgeInsets key="directionalLayoutMargins" top="12" leading="12" bottom="12" trailing="12"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-mq-TMY">
+                                        <rect key="frame" x="12" y="415" width="390" height="391"/>
+                                        <subviews>
+                                            <progressView opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YpP-V1-8nO">
+                                                <rect key="frame" x="12" y="0.0" width="366" height="4"/>
+                                                <color key="progressTintColor" red="0.81568627449999997" green="0.78823529410000004" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </progressView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Round: 0 / 15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLH-JY-zhy">
+                                                <rect key="frame" x="145.5" y="16" width="99.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.81568627449999997" green="0.78823529410000004" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" image="alessandro-venturi-CHrlgUbvb7Q-unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="xFN-kJ-Dmn">
+                                                <rect key="frame" x="12" y="48.5" width="366" height="307.5"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIx-IZ-1TB">
+                                                <rect key="frame" x="148.5" y="368" width="93.5" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <color key="textColor" red="0.81568627449999997" green="0.78823529410000004" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="YpP-V1-8nO" secondAttribute="trailing" constant="12" id="0So-J4-V20"/>
+                                            <constraint firstItem="YpP-V1-8nO" firstAttribute="leading" secondItem="U1L-mq-TMY" secondAttribute="leading" constant="12" id="5H6-4j-kNT"/>
+                                            <constraint firstAttribute="trailing" secondItem="xFN-kJ-Dmn" secondAttribute="trailing" constant="12" id="d6m-Vw-foG"/>
+                                            <constraint firstItem="xFN-kJ-Dmn" firstAttribute="leading" secondItem="U1L-mq-TMY" secondAttribute="leading" constant="12" id="g4e-KN-G61"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="12" leading="12" bottom="12" trailing="12"/>
+                                <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
+                                <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iht-wT-Trh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" systemColor="placeholderTextColor"/>
+                        <constraints>
+                            <constraint firstItem="iht-wT-Trh" firstAttribute="trailing" secondItem="XD4-Kk-Phf" secondAttribute="trailing" id="5DE-oU-Q4C"/>
+                            <constraint firstItem="XD4-Kk-Phf" firstAttribute="bottom" secondItem="iht-wT-Trh" secondAttribute="bottom" id="bUd-JE-W4W"/>
+                            <constraint firstItem="XD4-Kk-Phf" firstAttribute="top" secondItem="iht-wT-Trh" secondAttribute="top" id="dCF-GM-tqH"/>
+                            <constraint firstItem="XD4-Kk-Phf" firstAttribute="leading" secondItem="iht-wT-Trh" secondAttribute="leading" id="tc6-kX-pZt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnA1" destination="Ivq-cx-58p" id="pTP-Hk-RQf"/>
+                        <outlet property="btnA2" destination="WQn-U2-zsA" id="die-XA-sJj"/>
+                        <outlet property="btnA3" destination="PZ3-4C-zfF" id="iSv-9Z-ppY"/>
+                        <outlet property="btnA4" destination="dsa-IJ-rwl" id="r0J-Oq-2LM"/>
+                        <outlet property="pokemonImage" destination="xFN-kJ-Dmn" id="xwQ-PM-2pl"/>
+                        <outlet property="progressBar" destination="YpP-V1-8nO" id="6nL-KT-3Y6"/>
+                        <outlet property="roundLabel" destination="ZLH-JY-zhy" id="6Uk-7x-Afz"/>
+                        <outlet property="scoreCounter" destination="uIx-IZ-1TB" id="IYV-NU-iJN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nlW-uN-RyY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="671" y="84"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="alessandro-venturi-CHrlgUbvb7Q-unsplash" width="640" height="427"/>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
